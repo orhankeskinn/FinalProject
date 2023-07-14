@@ -25,16 +25,13 @@ namespace Business.Concrete
 
         public IDataResult<List<Product>> GetAll()
         {
-            if (DateTime.Now.Hour >= 19)
-            {
-                // Saat 19:00'dan sonra hata mesajı döndürme
-                return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
-            }
-            else
-            {
-                // Saat 19:00'dan önce ürünleri başarıyla döndürme
-                return new SuccessDataResult<List<Product>>(_productDal.GetAll(), Messages.ProductsListed);
-            }
+        //    if (DateTime.Now.Day == 14)
+        //    {
+
+        //        return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
+        //    }
+
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(), Messages.ProductsListed);
         }
 
         public IDataResult<List<Product>> GetAllByCategoryId(int id)
